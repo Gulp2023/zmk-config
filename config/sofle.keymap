@@ -9,6 +9,22 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    behaviors {
+        NextCharacter: NextCharacter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEXTCHARACTER";
+            bindings =
+                <&kp>,
+                <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <135>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <17 29>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -42,8 +58,8 @@
 
             bindings = <
       &kp GRAVE         &kp F1      &kp F2           &kp F3      &kp F4                                  &kp F5                             &kp F6              &kp F7    &kp F8               &kp F9    &kp F10              &kp F11
-&kp LS(LC(ESC))   &kp LG(PLUS)   &kp LC(N)      &kp LC(TAB)  &kp LC(N4)  &kp LC(N4)                      &kp PAGE_UP  &kp LS(LEFT_ARROW)    &kp UP  &kp LS(RIGHT_ARROW)   &kp HOME              &kp F12
-  &kp LS(LC(N))  &kp LG(MINUS)  &kp LC(AT)  &kp LC(LS(TAB))   &kp LC(Y)  &kp LC(Y)                       &kp PAGE_DOWN            &kp LEFT  &kp DOWN            &kp RIGHT    &kp END              &kp DEL
+&kp LS(LC(ESC))   &kp LG(PLUS)   &kp LC(N)      &kp LC(TAB)  &kp LC(N4)  &NextCharacter LC(LG(RIGHT)) LC(LG(D))                        &kp PAGE_UP  &kp LS(LEFT_ARROW)    &kp UP  &kp LS(RIGHT_ARROW)   &kp HOME              &kp F12
+  &kp LS(LC(N))  &kp LG(MINUS)  &kp LC(AT)  &kp LC(LS(TAB))   &kp LC(Y)  &NextCharacter LC(LG(LEFT)) LC(LG(F4))                      &kp PAGE_DOWN            &kp LEFT  &kp DOWN            &kp RIGHT    &kp END              &kp DEL
  &kp LEFT_SHIFT      &kp LC(A)   &kp LC(X)        &kp LC(C)   &kp LC(V)                                  &trans  &kp C_MUTE  &trans         &trans        &kp LA(LEFT)     &kp N        &kp LA(RIGHT)  &kp LC(W)  &mt RIGHT_SHIFT INS
                                     &trans           &trans      &trans                                  &trans      &trans  &trans         &tog 0              &trans    &trans               &trans
             >;
