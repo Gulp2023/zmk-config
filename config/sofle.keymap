@@ -41,9 +41,10 @@
             label = "new_macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press &kp LALT> ,
-                <&macro_tap &kp TAB> 
-                ;
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TAB>;
         };
     };
 
